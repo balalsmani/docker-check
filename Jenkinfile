@@ -1,0 +1,19 @@
+pipeline {
+    agent any 
+    stages {
+        stage ("SCM") {
+            steps {
+                git branch: 'main', credentialsId: '2fb0c9f0-d2f4-45a1-8a26-02013169a137', url: 'https://github.com/balalsmani/docker-check.git'
+            }
+        }
+        
+        stage ("Docker Removing") {
+            steps {
+                sh "docker build -t bala ."
+                sh "docker run -itd --name bala-con bala"
+            }
+        }
+        
+        
+    }
+}
