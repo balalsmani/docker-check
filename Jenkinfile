@@ -10,7 +10,7 @@ pipeline {
         stage ("Docker Removing") {
             steps {
                 sh "docker build -t bala ."
-                sh "docker run -itd --name bala-con bala"
+                sh "docker run -itd -p 8123:80 --name bala-con bala"
             }
         }
         
